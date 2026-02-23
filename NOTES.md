@@ -105,9 +105,7 @@ lerobot-record \
 
 
 Tasks:
-- Grab pens and place into pen holder
-- Grab markers and place into pen holder
-- Grab keys and place into pen holder
+- Pick up the pen and put it in the holder.
 
 
 
@@ -124,6 +122,30 @@ Default Record: ./run.sh
 
 Teleoperate only: ./run.sh "" "" "" "" teleop
 
-Custom Task/Time: ./run.sh "Grab pens and place into pen holder" 45 15 10
+Custom Task/Time: ./run.sh "Grab pens and place into pen holder" 15 15 10
 
-Resume: ./run.sh "Grab pens and place into pen holder" 45 15 10 resume
+Resume: ./run.sh "Grab pens and place into pen holder" 15 15 10 resume
+
+
+=====================================================
+
+
+Recommended 100-Episode Plan (Production Level):
+
+    Episodes 1–20 (The Anchor): Same pen (e.g., Red), same starting spot, same holder spot. This builds the "base skill."
+
+    Episodes 21–50 (Spatial Randomization): Move the starting position of the pen by 3–5cm every 2-3 episodes. Move the pen holder by 2cm every 5 episodes.
+
+    Episodes 51–80 (Color/Object Swapping): Switch to the Blue and Black pens. Important: Do not change the position when you first swap colors so the model learns "Color doesn't change the physics of the pick."
+
+    Episodes 81–100 (Orientation Variability): Rotate the pen (horizontal vs. vertical) so the gripper learns it needs to rotate 90° to grab it.
+
+Episode Length & Multi-Pen Handling:
+
+    One Episode = One Pen: Do not try to record picking all 3 pens in a single long episode yet. VLAs like GR00T N1.5 have a "temporal horizon" (usually 2–5 seconds of memory). If you do a 30-second multi-pen episode, the model gets "lost" after the first drop.
+
+    Instruction: Use "Pick up the pen and put it in the holder." The model will learn to look for any pen. If you want it to pick all 3, you'll need to run the inference loop 3 times.
+
+
+=====================================================
+
