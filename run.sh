@@ -2,10 +2,10 @@
 
 # --- FIXED CONFIGURATION ---
 ROBOT_TYPE="so101_follower"
-FOLLOWER_PORT="/dev/ttyACM1"
+FOLLOWER_PORT="/dev/ttyACM0"
 FOLLOWER_ID="follower_arm"
 LEADER_TYPE="so101_leader"
-LEADER_PORT="/dev/ttyACM0"
+LEADER_PORT="/dev/ttyACM1"
 LEADER_ID="leader_arm"
 CAMERAS='{ front: {type: opencv, index_or_path: 0, width: 640, height: 480, fps: 30, fourcc: "MJPG"}, wrist: {type: opencv, index_or_path: 2, width: 640, height: 480, fps: 30, fourcc: "MJPG"}}'
 REPO_ID="so101/clean_table"

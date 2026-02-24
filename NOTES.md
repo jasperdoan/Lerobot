@@ -52,53 +52,56 @@ Calibration saved to /home/jasper/.cache/huggingface/lerobot/calibration/robots/
 
 ====================================================================
 Teleoperate:
-lerobot-teleoperate \
-    --robot.type=so101_follower \
-    --robot.port=/dev/ttyACM1 \
-    --robot.id=follower_arm \
-    --robot.cameras="{ front: {type: opencv, index_or_path: 0, width: 640, height: 480, fps: 30, fourcc: "MJPG"}, wrist: {type: opencv, index_or_path: 2, width: 640, height: 480, fps: 30, fourcc: "MJPG"}}" \
-    --teleop.type=so101_leader \
-    --teleop.port=/dev/ttyACM0 \
-    --teleop.id=leader_arm \
-    --display_data=true
+
+    lerobot-teleoperate \
+        --robot.type=so101_follower \
+        --robot.port=/dev/ttyACM1 \
+        --robot.id=follower_arm \
+        --robot.cameras="{ front: {type: opencv, index_or_path: 0, width: 640, height: 480, fps: 30, fourcc: "MJPG"}, wrist: {type: opencv, index_or_path: 2, width: 640, height: 480, fps: 30, fourcc: "MJPG"}}" \
+        --teleop.type=so101_leader \
+        --teleop.port=/dev/ttyACM0 \
+        --teleop.id=leader_arm \
+        --display_data=true
 
 ====================================================================
 
 Record:
-lerobot-record \
-    --robot.type=so101_follower \
-    --robot.port=/dev/ttyACM1 \
-    --robot.id=follower_arm \
-    --robot.cameras="{ front: {type: opencv, index_or_path: 0, width: 640, height: 480, fps: 30, fourcc: "MJPG"}, wrist: {type: opencv, index_or_path: 2, width: 640, height: 480, fps: 30, fourcc: "MJPG"}}" \
-    --teleop.type=so101_leader \
-    --teleop.port=/dev/ttyACM0 \
-    --teleop.id=leader_arm \
-    --display_data=true \
-    --dataset.repo_id=so101/clean_table \
-    --dataset.num_episodes=10 \
-    --dataset.single_task="Pick up and move the cup to the marker" \
-    --dataset.push_to_hub=false \
-    --dataset.episode_time_s=60 \
-    --dataset.reset_time_s=30
+
+    lerobot-record \
+        --robot.type=so101_follower \
+        --robot.port=/dev/ttyACM1 \
+        --robot.id=follower_arm \
+        --robot.cameras="{ front: {type: opencv, index_or_path: 0, width: 640, height: 480, fps: 30, fourcc: "MJPG"}, wrist: {type: opencv, index_or_path: 2, width: 640, height: 480, fps: 30, fourcc: "MJPG"}}" \
+        --teleop.type=so101_leader \
+        --teleop.port=/dev/ttyACM0 \
+        --teleop.id=leader_arm \
+        --display_data=true \
+        --dataset.repo_id=so101/clean_table \
+        --dataset.num_episodes=10 \
+        --dataset.single_task="Pick up and move the cup to the marker" \
+        --dataset.push_to_hub=false \
+        --dataset.episode_time_s=60 \
+        --dataset.reset_time_s=30
 
 
 Resume:
-lerobot-record \
-    --robot.type=so101_follower \
-    --robot.port=/dev/ttyACM1 \
-    --robot.id=follower_arm \
-    --robot.cameras="{ front: {type: opencv, index_or_path: 0, width: 640, height: 480, fps: 30, fourcc: "MJPG"}, wrist: {type: opencv, index_or_path: 2, width: 640, height: 480, fps: 30, fourcc: "MJPG"}}" \
-    --teleop.type=so101_leader \
-    --teleop.port=/dev/ttyACM0 \
-    --teleop.id=leader_arm \
-    --display_data=true \
-    --dataset.repo_id=so101/clean_table \
-    --dataset.num_episodes=8 \
-    --dataset.single_task="Pick up and move the cup to the marker" \
-    --dataset.push_to_hub=false \
-    --dataset.episode_time_s=60 \
-    --dataset.reset_time_s=30 \
-    --resume=true
+
+    lerobot-record \
+        --robot.type=so101_follower \
+        --robot.port=/dev/ttyACM1 \
+        --robot.id=follower_arm \
+        --robot.cameras="{ front: {type: opencv, index_or_path: 0, width: 640, height: 480, fps: 30, fourcc: "MJPG"}, wrist: {type: opencv, index_or_path: 2, width: 640, height: 480, fps: 30, fourcc: "MJPG"}}" \
+        --teleop.type=so101_leader \
+        --teleop.port=/dev/ttyACM0 \
+        --teleop.id=leader_arm \
+        --display_data=true \
+        --dataset.repo_id=so101/clean_table \
+        --dataset.num_episodes=8 \
+        --dataset.single_task="Pick up and move the cup to the marker" \
+        --dataset.push_to_hub=false \
+        --dataset.episode_time_s=60 \
+        --dataset.reset_time_s=30 \
+        --resume=true
 
 
 ~/.cache/huggingface/lerobot/{repo-id}
@@ -118,36 +121,19 @@ Tasks:
 *p4: Number of episodes
 *p5: Whether to resume from the last episode (optional, default: false)
 
-Default Record: ./run.sh
+Default Record: `./run.sh`
 
-Teleoperate only: ./run.sh "" "" "" "" teleop
+Teleoperate only: `./run.sh "" "" "" "" teleop`
 
-Custom Task/Time: ./run.sh "Grab pens and place into pen holder" 15 15 10
+Custom Task/Time: `./run.sh "Grab pen and place into pen holder" 15 15 10`
 
-Resume: ./run.sh "Grab pens and place into pen holder" 15 15 10 resume
+Resume: `./run.sh "Grab pen and place into pen holder" 15 15 10 resume`
 
 
 =====================================================
 
 
 Recommended 100-Episode Plan (Production Level):
-
-    Episodes 1–20 (The Anchor): Same pen (e.g., Red), same starting spot, same holder spot. This builds the "base skill."
-
-    Episodes 21–50 (Spatial Randomization): Move the starting position of the pen by 3–5cm every 2-3 episodes. Move the pen holder by 2cm every 5 episodes.
-
-    Episodes 51–80 (Color/Object Swapping): Switch to the Blue and Black pens. Important: Do not change the position when you first swap colors so the model learns "Color doesn't change the physics of the pick."
-
-    Episodes 81–100 (Orientation Variability): Rotate the pen (horizontal vs. vertical) so the gripper learns it needs to rotate 90° to grab it.
-
-Episode Length & Multi-Pen Handling:
-
-    One Episode = One Pen: Do not try to record picking all 3 pens in a single long episode yet. VLAs like GR00T N1.5 have a "temporal horizon" (usually 2–5 seconds of memory). If you do a 30-second multi-pen episode, the model gets "lost" after the first drop.
-
-    Instruction: Use "Pick up the pen and put it in the holder." The model will learn to look for any pen. If you want it to pick all 3, you'll need to run the inference loop 3 times.
-
-
-=====================================================
 
 
 ### The Coordinate System & Constraints
@@ -160,12 +146,12 @@ Episode Length & Multi-Pen Handling:
 
 | Episode # | Pen Color | Pen (X, Y) | Holder (X, Y) | Pen Orientation | Key Lesson for Model |
 |:---|:---|:---|:---|:---|:---|
-| **1-10** | Red | (0, 10) | (0, 14) | Vertical (0°) | **The Anchor:** Perfecting the motor "pathway." |
-| **11-20** | Red | (0, 10) | (0, 14) | Vertical (0°) | **Consistency:** Building high confidence in the base task. |
-| **21-25** | Red | (-8, 8) | (0, 14) | Vertical (0°) | **Left Reach:** Solving for negative X coordinates. |
-| **26-30** | Red | (8, 8) | (0, 14) | Vertical (0°) | **Right Reach:** Solving for positive X coordinates. |
-| **31-35** | Red | (0, 13) | (0, 14) | Vertical (0°) | **Deep Reach:** Pen is very close to the holder. |
-| **36-40** | Red | (0, 7) | (0, 14) | Vertical (0°) | **Close Reach:** Pen is near the dead zone. |
+| **1-10** | Red | (0, 9) | (0, 14) | Vertical (0°) | **The Anchor:** Perfecting the motor "pathway." |
+| **11-20** | Red | (0, 9) | (0, 14) | Vertical (0°) | **Consistency:** Building high confidence in the base task. |
+| **21-25** | Red | (-6, 8) | (0, 14) | Vertical (0°) | **Left Reach:** Solving for negative X coordinates. |
+| **26-30** | Red | (6, 8) | (0, 14) | Vertical (0°) | **Right Reach:** Solving for positive X coordinates. |
+| **31-35** | Red | (8, 2) | (0, 14) | Vertical (0°) | **Far Side Reach:** Pen is close to range. |
+| **36-40** | Red | (-8, 2) | (0, 14) | Vertical (0°) | **Far Side Reach:** Pen is close to range. |
 | **41-45** | Red | (0, 10) | (-6, 12) | Vertical (0°) | **Moving Target:** Holder moves to the left. |
 | **46-50** | Red | (10, 8) | (6, 12) | Vertical (0°) | **Extreme Edge:** Far right pen to right-shifted holder. |
 | **51-55** | Blue | (0, 10) | (0, 14) | Vertical (0°) | **Color Swap:** Identity generalization (Blue). |
