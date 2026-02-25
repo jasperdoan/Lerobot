@@ -125,9 +125,9 @@ Default Record: `./run.sh`
 
 Teleoperate only: `./run.sh "" "" "" "" teleop`
 
-Custom Task/Time: `./run.sh "Grab pen and place into pen holder" 15 15 10`
+Custom Task/Time: `./run.sh "Grab pen and place into pen holder" 20 10 5`
 
-Resume: `./run.sh "Grab pen and place into pen holder" 15 15 10 resume`
+Resume: `./run.sh "Grab pen and place into pen holder" 20 10 5 resume`
 
 
 =====================================================
@@ -150,18 +150,18 @@ Recommended 100-Episode Plan (Production Level):
 | **11-20** | Red | (0, 9) | (0, 14) | Vertical (0°) | **Consistency:** Building high confidence in the base task. |
 | **21-25** | Red | (-6, 8) | (0, 14) | Vertical (0°) | **Left Reach:** Solving for negative X coordinates. |
 | **26-30** | Red | (6, 8) | (0, 14) | Vertical (0°) | **Right Reach:** Solving for positive X coordinates. |
-| **31-35** | Red | (8, 2) | (0, 14) | Vertical (0°) | **Far Side Reach:** Pen is close to range. |
-| **36-40** | Red | (-8, 2) | (0, 14) | Vertical (0°) | **Far Side Reach:** Pen is close to range. |
-| **41-45** | Red | (0, 10) | (-6, 12) | Vertical (0°) | **Moving Target:** Holder moves to the left. |
-| **46-50** | Red | (10, 8) | (6, 12) | Vertical (0°) | **Extreme Edge:** Far right pen to right-shifted holder. |
-| **51-55** | Blue | (0, 10) | (0, 14) | Vertical (0°) | **Color Swap:** Identity generalization (Blue). |
+| **31-35** | Red | (10, 4) | (0, 14) | Vertical (0°) | **Far Side Reach:** Pen is close to range. |
+| **36-40** | Red | (-4, 10) | (0, 14) | Vertical (0°) | **Far Side Reach:** Pen is close to range. |
+| **41-45** | Red | (0, 9) | (-6, 12) | Vertical (0°) | **Moving Target:** Holder moves to the left. |
+| **46-50** | Red | (10, 4) | (6, 12) | Vertical (0°) | **Extreme Edge:** Far right pen to right-shifted holder. |
+| **51-55** | Blue | (0, 9) | (0, 14) | Vertical (0°) | **Color Swap:** Identity generalization (Blue). |
 | **56-60** | Blue | (-7, 9) | (5, 13) | Vertical (0°) | **Spatial + Color:** Cross-body reach with new color. |
-| **61-65** | Black | (0, 10) | (0, 14) | Vertical (0°) | **Color Swap:** Identity generalization (Black). |
+| **61-65** | Black | (0, 9) | (0, 14) | Vertical (0°) | **Color Swap:** Identity generalization (Black). |
 | **66-70** | Black | (7, 9) | (-5, 13) | Vertical (0°) | **Spatial + Color:** Cross-body reach with new color. |
 | **71-75** | Any | (-8, 10) | (0, 14) | **Horizontal (90°)**| **Edge Rotation:** Forced 90° wrist turn at a far-left angle. |
 | **76-80** | Any | (8, 10) | (0, 14) | **Horizontal (90°)**| **Edge Rotation:** Forced 90° wrist turn at a far-right angle. |
-| **81-85** | Any | (0, 10) | (0, 14) | **Diagonal (45°)** | **Rotation:** Gripper must tilt 45° to match pen. |
-| **86-90** | Any | (0, 10) | (0, 14) | **Horizontal (90°)**| **Rotation:** Gripper must tilt 90° (Full Side Grab). |
+| **81-85** | Any | (0, 9) | (0, 14) | **Diagonal (45°)** | **Rotation:** Gripper must tilt 45° to match pen. |
+| **86-90** | Any | (0, 9) | (0, 14) | **Horizontal (90°)**| **Rotation:** Gripper must tilt 90° (Full Side Grab). |
 | **91-95** | Any | Random* | (0, 14) | **Diagonal (-45°)**| **Rotation:** Counter-rotation reach. |
 | **96-100**| Any | Random* | Random* | **Full Random** | **Production Test:** Mix all variables. |
 
