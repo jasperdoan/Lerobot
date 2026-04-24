@@ -7,11 +7,11 @@ FOLLOWER_ID="follower_arm"
 LEADER_TYPE="so101_leader"
 LEADER_PORT="/dev/ttyACM1"
 LEADER_ID="leader_arm"
-CAMERAS='{ front: {type: opencv, index_or_path: 0, width: 640, height: 480, fps: 30, fourcc: "MJPG"}, wrist: {type: opencv, index_or_path: 2, width: 640, height: 480, fps: 30, fourcc: "MJPG"}}'
-REPO_ID="so101/clean_table"
+CAMERAS='{ front: {type: opencv, index_or_path: 2, width: 640, height: 480, fps: 30, fourcc: "MJPG"}, wrist: {type: opencv, index_or_path: 4, width: 640, height: 480, fps: 30, fourcc: "MJPG"}}'
+REPO_ID="so101/handover"
 
 # --- DEFAULT DYNAMIC VALUES ---
-TASK=${1:-"Pick up and move the cup to the marker"}
+TASK=${1:-"Grab and put down the screwdriver on the right side of the table"}
 TIME=${2:-60}
 RESET=${3:-30}
 NUM_EPISODES=${4:-10}

@@ -115,11 +115,11 @@ Tasks:
 
 ============================================
 
-*p1: Task name
-*p2: Episode time in seconds
-*p3: Reset time in seconds
-*p4: Number of episodes
-*p5: Whether to resume from the last episode (optional, default: false)
+*parameter1: Task name
+*parameter2: Episode time in seconds
+*parameter3: Reset time in seconds
+*parameter4: Number of episodes
+*parameter5: Whether to resume from the last episode (optional, default: false)
 
 Default Record: `./run.sh`
 
@@ -175,3 +175,9 @@ Recommended 100-Episode Plan (Production Level):
 3.  Lift arm vertically 3 inches (Clearance).
 4.  Move arm to **(0, 8)**.
 5.  **Stop recording.**
+
+
+
+---
+
+./run.sh "Grab and put down the screwdriver on the right side of the table" 30 20 5
